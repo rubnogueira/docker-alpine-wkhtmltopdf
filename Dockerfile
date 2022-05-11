@@ -1,5 +1,5 @@
-ARG ALPINE_VERSION=3.14
-ARG WKHTMLTOX_VERSION=0.12.5
+ARG ALPINE_VERSION=3.10
+ARG WKHTMLTOX_VERSION=0.12.6
 
 FROM --platform=$BUILDPLATFORM alpine:$ALPINE_VERSION
 
@@ -23,6 +23,7 @@ RUN apk add --no-cache                          \
     ttf-droid                                   \
     ttf-freefont                                \
     ttf-liberation                              \
+    ttf-ubuntu-font-family                      \
     && apk add --no-cache --virtual .build-deps \
     g++                                         \
     git                                         \
@@ -41,7 +42,7 @@ RUN apk add --no-cache                          \
 # Download source files
 RUN git clone --recursive $REPO /tmp/wkhtmltopdf                            \
     && cd /tmp/wkhtmltopdf                                                  \
-    && git checkout tags/$WKHTMLTOX_VERSION                                 \
+    && git checkout $WKHTMLTOX_VERSION                                      \
                                                                             \
     # Apply patches
     && cd /tmp/wkhtmltopdf/qt                                               \
