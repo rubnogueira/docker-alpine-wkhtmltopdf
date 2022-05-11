@@ -3,7 +3,7 @@
 ALPINE_VERSION="3.14"
 WKHTMLTOX_VERSION="0.12.5"
 
-docker buildx build --platform linux/amd64,linux/arm64 \
+docker buildx build --platform linux/amd64,linux/arm64 . \
 	--build-arg ALPINE_VERSION \
 	--build-arg WKHTMLTOX_VERSION \
 	--push \
