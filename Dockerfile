@@ -1,4 +1,4 @@
-ARG ALPINE_VERSION=3.10
+ARG ALPINE_VERSION=3.16
 ARG WKHTMLTOX_VERSION=0.12.6
 
 FROM --platform=$BUILDPLATFORM alpine:$ALPINE_VERSION
@@ -9,9 +9,12 @@ ENV REPO=https://github.com/wkhtmltopdf/wkhtmltopdf.git
 RUN mkdir -p /tmp/patches
 COPY patches/* /tmp/patches/
 
+RUN apk add --no-cache                                                                      \
+    libstdc++=8.3.0-r0                                                                      \
+    g++=8.3.0-r0 --no-cache --repository https://dl-cdn.alpinelinux.org/alpine/v3.10/main/
+
 # Install needed packages
 RUN apk add --no-cache                          \
-    libstdc++                                   \
     libx11                                      \
     libxrender                                  \
     libxext                                     \
@@ -23,9 +26,7 @@ RUN apk add --no-cache                          \
     ttf-droid                                   \
     ttf-freefont                                \
     ttf-liberation                              \
-    ttf-ubuntu-font-family                      \
     && apk add --no-cache --virtual .build-deps \
-    g++                                         \
     git                                         \
     gtk+                                        \
     gtk+-dev                                    \
