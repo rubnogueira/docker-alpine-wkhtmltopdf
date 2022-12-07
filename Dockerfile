@@ -1,7 +1,7 @@
 ARG ALPINE_VERSION=3.16
 ARG WKHTMLTOX_VERSION=0.12.6
 
-FROM --platform=$BUILDPLATFORM alpine:$ALPINE_VERSION
+FROM alpine:$ALPINE_VERSION
 
 ENV REPO=https://github.com/wkhtmltopdf/wkhtmltopdf.git
 
