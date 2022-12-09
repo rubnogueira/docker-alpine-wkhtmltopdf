@@ -35,5 +35,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
       - name: Build and push Docker image
+        timeout-minutes: 1440
         run: |
           /bin/bash build.sh
