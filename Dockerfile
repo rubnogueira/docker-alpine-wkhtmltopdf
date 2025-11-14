@@ -1,5 +1,5 @@
-ARG ALPINE_VERSION=3.16
-ARG WKHTMLTOX_VERSION=0.12.6
+ARG ALPINE_VERSION=3.22
+ARG WKHTMLTOX_VERSION=024b2b2bb459dd904d15b911d04c6df4ff2c9031
 
 FROM alpine:$ALPINE_VERSION
 
@@ -18,9 +18,9 @@ RUN apk add --no-cache                          \
     libx11                                      \
     libxrender                                  \
     libxext                                     \
-    libssl1.1                                   \
-    ca-certificates                             \
-    fontconfig                                  \
+    libssl3                                     \
+    ca-certificates                              \
+    fontconfig                                   \
     freetype                                    \
     ttf-dejavu                                  \
     ttf-droid                                   \
@@ -28,14 +28,14 @@ RUN apk add --no-cache                          \
     ttf-liberation                              \
     && apk add --no-cache --virtual .build-deps \
     git                                         \
-    gtk+                                        \
-    gtk+-dev                                    \
+    gtk+2.0                                     \
+    gtk+2.0-dev                                 \
     make                                        \
     mesa-dev                                    \
     msttcorefonts-installer                     \
     openssl-dev                                 \
     patch                                       \
-    fontconfig-dev                              \
+    fontconfig-dev                               \
     freetype-dev                                \
     && update-ms-fonts                          \
     && fc-cache -f

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ALPINE_VERSION="3.16"
-WKHTMLTOX_VERSION="0.12.6"
+ALPINE_VERSION="3.22"
+WKHTMLTOX_VERSION="024b2b2bb459dd904d15b911d04c6df4ff2c9031"
 
 docker buildx create --use --platform "linux/arm64,linux/amd64"
 docker buildx build --platform "linux/amd64,linux/arm64" . \
